@@ -12,7 +12,8 @@
       "@Assets/*": ["src/assets/*"],
       "@Components/*": ["src/components/*"],
       "@Features/*": ["src/features/*"],
-      "@Routes/*": ["src/routes/*"]
+      "@Routes/*": ["src/routes/*"],
+      "@Store/*": ["src/store/*"]
     },
     /* Bundler mode */
     "moduleResolution": "bundler",
