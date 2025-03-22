@@ -13,6 +13,10 @@ export default defineConfig({
         target: 'http://127.0.0.1:5173',
         changeOrigin: true,
       },
+      '/acquisitions': {
+        target: 'http://127.0.0.1:5173',
+        changeOrigin: true,
+      },
     },
   },
   resolve: {

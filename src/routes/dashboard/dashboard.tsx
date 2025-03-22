@@ -1,5 +1,6 @@
-import { Link } from 'react-router';
+import { Acquisitions } from '@/components/acquisitions/acquisitions';
 import { testId } from './dashboard.utils';
+import { Flex, Layout } from 'antd';
 
 /**
  * Entry route to main dashboard component
@@ -7,9 +8,14 @@ import { testId } from './dashboard.utils';
  */
 export const Dashboard = (): React.ReactElement => {
   return (
-    <div data-testid={testId}>
-      This is the dashboard
-      <Link to={'/'}>Back to login page</Link>
-    </div>
+    <Flex gap="middle" wrap data-testid={testId}>
+      <Layout>
+        <Layout.Header></Layout.Header>
+        <Layout.Content>
+          <Acquisitions />
+        </Layout.Content>
+        <Layout.Footer></Layout.Footer>
+      </Layout>
+    </Flex>
   );
 };
