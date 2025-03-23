@@ -1,7 +1,10 @@
 {
   "translation": {
     "acquisitions": {
-      "acquisitions": "Acquisitions"
+      "acquisitions": "Acquisitions",
+      "hourly": "Hour of day",
+      "dow": "Day of week",
+      "description-acquisitions": "Data is presented in hourly or day of week format. Hourly shows number of acquisitions at given hour within the dataset. Whereas day of week presents acquisitions at a day of week"
     },
     "common": {
       "ok": "Okay",
