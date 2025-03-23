@@ -1,5 +1,5 @@
 import { AcquisitionsResponse } from '@/types/acquisitions.type';
-import { fromUnixTime, format } from 'date-fns';
+import { fromUnixTime } from 'date-fns';
 
 export type HistogramData = {
   hour: number; // x times ore_sites acquired at that hour
@@ -28,8 +28,6 @@ export const generateHourlyData = (acq: AcquisitionsResponse): Array<HistogramDa
   });
   return data;
 };
-
-const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
 
 export const generateDayOfWeekData = (acq: AcquisitionsResponse): Array<DayOfWeek> => {
   let data: Array<DayOfWeek> = [];

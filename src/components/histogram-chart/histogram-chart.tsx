@@ -1,7 +1,7 @@
 import { useGetAcquisitionsQuery } from '@/store/api/acquisitions-service';
 import { generateHourlyData, generateDayOfWeekData } from '@/utils/data-utils';
 import { Histogram } from '@ant-design/charts';
-import { Col, Row } from 'antd';
+import { Card, Col, Row } from 'antd';
 import { useMemo } from 'react';
 
 export const HistogramChart = (): React.ReactElement => {
@@ -28,16 +28,8 @@ export const HistogramChart = (): React.ReactElement => {
 
   return (
     <Row>
-      <Col span={12}>
-        <Histogram data={hourly ?? []} binField={'hour'} binNumber={24} />
-      </Col>
-      <Col span={12}>
-        <Histogram data={dayOfWeek ?? []} binField={'day'} binNumber={7} />
-      </Col>
-      <Col span={12}>
-        <Histogram data={hourly ?? []} binField={'hour'} binNumber={24} />
-      </Col>
-      <Col span={12}>
+      <Col span={24}></Col>
+      <Col span={24}>
         <Histogram data={hourly ?? []} binField={'hour'} binNumber={24} />
       </Col>
     </Row>

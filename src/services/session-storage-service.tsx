@@ -57,3 +57,11 @@ export function setSessionStorage<T>(key: string, value: T): void {
   const storageService = getSessionStorageService();
   storageService.setItem(key, JSON.stringify(value));
 }
+
+/**
+ * Clear session storage
+ */
+export function clearSessionStorage(): void {
+  const storageService = getSessionStorageService();
+  storageService.clear();
+}
