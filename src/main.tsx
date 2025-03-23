@@ -6,13 +6,17 @@ import { Provider } from 'react-redux';
 
 import { App } from './App.tsx';
 import './i18n';
+import { ConfigProvider } from 'antd';
+import { theme } from './utils/theme.ts';
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <Provider store={store}>
-      <BrowserRouter>
-        <App />
-      </BrowserRouter>
+      <ConfigProvider theme={theme}>
+        <BrowserRouter>
+          <App />
+        </BrowserRouter>
+      </ConfigProvider>
     </Provider>
   </StrictMode>
 );

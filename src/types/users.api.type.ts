@@ -1,17 +1,17 @@
-export type Users = {
+export type User = {
   user_id: string;
   name: string;
 };
 
-export type UsersResponse = Array<Users>;
+export type UsersResponse = Array<User>;
 
 export type UpdateUser = {
-  user_id: string;
+  user_id?: string;
   name: string;
   password: string;
 };
 
-export interface UpdateUserResponse extends Users {
+export interface UpdateUserResponse extends User {
   password: string;
 }
 
