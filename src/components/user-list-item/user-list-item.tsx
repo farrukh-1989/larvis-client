@@ -1,11 +1,12 @@
-import { useLazyGetUserQuery } from '@/store/api/user-service';
+import { useLazyGetUserQuery } from '@Store/api/user-service';
 import { User } from '@/types/users.api.type';
 import { Avatar, Button, List } from 'antd';
 import { useTranslation } from 'react-i18next';
 import { UserUpdateDialog } from '../user-update-dialog/user-update-dialog';
 import { useState } from 'react';
+import { testIds } from './user-list-item.utils';
 
-type UserListItemProps = {
+export type UserListItemProps = {
   user?: User;
 };
 
@@ -27,17 +28,23 @@ export const UserListItem = (props: UserListItemProps): React.ReactElement => {
   return (
     <>
       <List.Item
+        data-testid={`${testIds.listUser}-${userData?.name}`}
         actions={[
-          <Button size="small" onClick={handleGetUserAndChangePwd}>
+          <Button
+            size="small"
+            onClick={handleGetUserAndChangePwd}
+            data-testid={`${testIds.btnUpdateUser}-${userData?.name}`}
+          >
             {t('users.update-user')}
           </Button>,
         ]}
       >
         <List.Item.Meta
+          data-testid={`${testIds.metaUser}-${userData?.name}`}
           avatar={<Avatar>{props.user?.name.charAt(0)}</Avatar>}
           title={props.user?.name}
           description="Astronaut"
-        ></List.Item.Meta>
+        />
       </List.Item>
       <UserUpdateDialog isOpen={isModalOpen} user={userData} onCloseDialog={handleCloseDialog} />
     </>

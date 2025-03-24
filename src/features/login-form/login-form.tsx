@@ -1,8 +1,9 @@
-import { useLoginMutation } from '@/store/api/login-service';
-import { isStringValid } from '@/utils/common';
+import { useLoginMutation } from '@Store/api/login-service';
+import { isStringValid } from '../../utils/common';
 import { Card, Form, Input, Button, FormProps, notification } from 'antd';
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router';
+import { testIds } from './login-form.utils';
 
 type FieldType = {
   username?: string;
@@ -37,6 +38,7 @@ export const LoginForm = (): React.ReactElement => {
           <Form.Item<FieldType>
             label={t('login.username')}
             name="username"
+            data-testid={testIds.inputUsername}
             rules={[{ required: true, message: t('login.username-warning') }]}
           >
             <Input />
@@ -44,12 +46,13 @@ export const LoginForm = (): React.ReactElement => {
           <Form.Item<FieldType>
             label={t('login.password')}
             name="password"
+            data-testid={testIds.inputPassword}
             rules={[{ required: true, message: t('login.password-warning') }]}
           >
             <Input.Password />
           </Form.Item>
           <Form.Item label={null}>
-            <Button type="primary" htmlType="submit" block>
+            <Button type="primary" htmlType="submit" block data-testid={testIds.btnLogin}>
               {t('login.submit')}
             </Button>
           </Form.Item>

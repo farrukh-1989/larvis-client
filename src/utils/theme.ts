@@ -6,7 +6,6 @@ export const theme: ThemeConfig = {
   },
   components: {
     Layout: {
-      colorBgHeader: 'transparent',
       headerBg: 'transparent',
     },
   },
