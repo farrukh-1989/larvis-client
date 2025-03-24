@@ -1,6 +1,6 @@
 import { GetUserResponse } from '@/types/users.api.type';
 
-import i18n from '@/i18n';
+import i18n from '../i18n';
 
 export type PwdValid = {
   valid?: boolean;
