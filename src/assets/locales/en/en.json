@@ -26,10 +26,10 @@
       "update-user": "Update user",
       "cant-change-pwd": "You're about to update {{name}}'s account. Do they know you are making this change ? The action will be prevented. Ask {{name}} to change their own account",
       "old-pwd-match": "Old password does not match with input",
-      "password-updated": "Password updated",
-      "password-updated-description": "Account for user {{name}} updated successfuly.",
-      "password-update-failed": "Account update failed",
-      "password-update-failed-description": "Failed to update account for user {{name}}. Please try again alter."
+      "updated": "Password updated",
+      "updated-description": "Account for user {{name}} updated successfuly.",
+      "update-failed": "Account update failed",
+      "update-failed-description": "Failed to update account for user {{name}}. Please try again alter."
     }
   }
 }

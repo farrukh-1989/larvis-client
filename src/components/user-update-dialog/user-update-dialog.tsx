@@ -1,11 +1,13 @@
-import { useUpdateUserMutation } from '@/store/api/user-service';
-import { GetUserResponse } from '@/types/users.api.type';
-import { isPwdChangeValid } from '@/utils/user-utils';
+import { useUpdateUserMutation } from '@Store/api/user-service';
+import { GetUserResponse } from '@Types/users.api.type';
+import { isStringValid } from '@Utils/common';
+import { isPwdChangeValid } from '@Utils/user-utils';
 import { Button, Col, Input, Modal, notification, Row } from 'antd';
 import { ChangeEvent, useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
+import { testId } from './user-update-dialog.utils';
 
-type UserUpdateDialogProps = {
+export type UserUpdateDialogProps = {
   isOpen: boolean;
   isLoading?: boolean;
   user?: GetUserResponse;
@@ -40,6 +42,8 @@ export const UserUpdateDialog = ({
   }
 
   const canChangePwd = isOpen && !isLoading && user && user?.password?.trim().length > 0;
+  const isUpdateDisabled =
+    (newPwd.length <= 3 || oldPwd.length <= 3 || updatingUser) && (name === user?.name || !isStringValid(name));
 
   /**
    * Validate if old pwd and users pwd are same
@@ -55,16 +59,16 @@ export const UserUpdateDialog = ({
       updateUser({ name: name, password: newPwd, user_id: user?.name })
         .then(() => {
           noti.info({
-            message: t('users.password-updated'),
-            description: t('users.password-updated-description', { name: user?.name }),
+            message: t('users.updated'),
+            description: t('users.updated-description', { name: user?.name }),
             placement: 'topRight',
           });
           onCloseDialog();
         })
         .catch(() => {
           noti.error({
-            message: 'users.password-update-failed',
-            description: t('users.password-update-failed-description', { name: user?.name }),
+            message: 'users.update-failed',
+            description: t('users.update-failed-description', { name: user?.name }),
             placement: 'topRight',
           });
         });
@@ -79,8 +83,9 @@ export const UserUpdateDialog = ({
         {canChangePwd && (
           <Button
             type="primary"
-            disabled={newPwd.length <= 3 || oldPwd.length <= 3 || updatingUser}
+            disabled={isUpdateDisabled}
             onClick={handleValidatePwdChange}
+            data-testid={`${testId}-update-btn`}
           >
             {t('users.update-user')}
           </Button>

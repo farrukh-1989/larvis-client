@@ -3,13 +3,19 @@
   "references": [{ "path": "./tsconfig.app.json" }, { "path": "./tsconfig.node.json" }],
   "compilerOptions": {
     "baseUrl": ".",
+    "types": ["node", "jest", "@testing-library/jest-dom"],
+    "jsx": "react-jsx",
+    "resolveJsonModule": true,
+    "esModuleInterop": true,
     "paths": {
       "@/*": ["./src/*", "./dist/*", ""],
       "@Assets/*": ["src/assets/*"],
       "@Components/*": ["src/components/*"],
       "@Features/*": ["src/features/*"],
       "@Routes/*": ["src/routes/*"],
-      "@Store/*": ["src/store/*"]
+      "@Store/*": ["src/store/*"],
+      "@Utils/*": ["src/utils/*"],
+      "@Types/*": ["src/types/*"]
     }
   }
 }
