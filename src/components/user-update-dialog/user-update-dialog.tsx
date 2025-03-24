@@ -5,7 +5,7 @@ import { isPwdChangeValid } from '../../utils/user-utils';
 import { Button, Col, Input, Modal, notification, Row } from 'antd';
 import { ChangeEvent, useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { testId } from './user-update-dialog.utils';
+import { testIds } from './user-update-dialog.utils';
 
 export type UserUpdateDialogProps = {
   isOpen: boolean;
@@ -79,13 +79,15 @@ export const UserUpdateDialog = ({
     return (
       <>
         {contextHolder}
-        <Button onClick={onCloseDialog}>{t('common.cancel')}</Button>
+        <Button onClick={onCloseDialog} data-testid={testIds.btnClose}>
+          {t('common.cancel')}
+        </Button>
         {canChangePwd && (
           <Button
             type="primary"
             disabled={isUpdateDisabled}
             onClick={handleValidatePwdChange}
-            data-testid={`${testId}-update-btn`}
+            data-testid={testIds.btnUpdate}
           >
             {t('users.update-user')}
           </Button>
@@ -107,17 +109,35 @@ export const UserUpdateDialog = ({
       title={t('users.update-user')}
       footer={renderFooter}
     >
-      {!canChangePwd && <p>{t('users.cant-change-pwd', { name: user?.name })}</p>}
+      {!canChangePwd && <p data-testid={testIds.msgInvalidUser}>{t('users.cant-change-pwd', { name: user?.name })}</p>}
       {canChangePwd && (
         <Row gutter={8}>
           <Col span={24}>
-            <Input type="text" placeholder="Name" value={name} onChange={handleNameChange} />
+            <Input
+              type="text"
+              placeholder="Name"
+              value={name}
+              onChange={handleNameChange}
+              data-testid={testIds.inputName}
+            />
           </Col>
           <Col span={24} style={{ marginTop: '12px' }}>
-            <Input type="password" placeholder="Current password" value={oldPwd} onChange={handleOldPwChange} />
+            <Input
+              type="password"
+              placeholder="Current password"
+              value={oldPwd}
+              onChange={handleOldPwChange}
+              data-testid={testIds.inputOldPwd}
+            />
           </Col>
           <Col span={24} style={{ marginTop: '12px' }}>
-            <Input type="password" placeholder="New password" value={newPwd} onChange={handleNewPwChange} />
+            <Input
+              type="password"
+              placeholder="New password"
+              value={newPwd}
+              onChange={handleNewPwChange}
+              data-testid={testIds.inputNewPwd}
+            />
           </Col>
           <p>{validationMsg}</p>
         </Row>
