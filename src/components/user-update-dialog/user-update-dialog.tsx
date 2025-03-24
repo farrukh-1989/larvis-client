@@ -1,7 +1,7 @@
 import { useUpdateUserMutation } from '@Store/api/user-service';
 import { GetUserResponse } from '@Types/users.api.type';
-import { isStringValid } from '@Utils/common';
-import { isPwdChangeValid } from '@Utils/user-utils';
+import { isStringValid } from '../../utils/common';
+import { isPwdChangeValid } from '../../utils/user-utils';
 import { Button, Col, Input, Modal, notification, Row } from 'antd';
 import { ChangeEvent, useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
